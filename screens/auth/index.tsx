@@ -3,24 +3,24 @@ import React, { useState } from "react";
 import { View } from "react-native";
 import { Text } from "@gluestack-ui/themed";
 import { InputField } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { Button, ButtonText } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Box } from "@/components/ui/box";
-
+import { useNavigation } from "@react-navigation/native";
 const AuthScreen = () => {
   const insets = useSafeAreaInsets();
-
+  const navigation = useNavigation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = () => {
-    // Add your login logic here
     console.log("Login:", email, password);
+    // route.push('/')
   };
 
   const handleSignUp = () => {
-    // Add your signup logic here
     console.log("Sign up:", email, password);
+    navigation.navigate("Register" as never);
   };
 
   return (
@@ -55,7 +55,7 @@ const AuthScreen = () => {
             action="primary"
             onPress={handleLogin}
           >
-            <Text className="text-white">Login</Text>
+            <ButtonText className="text-white">Login</ButtonText>
           </Button>
 
           <Button
@@ -65,7 +65,7 @@ const AuthScreen = () => {
             action="secondary"
             onPress={handleSignUp}
           >
-            <Text>Sign Up</Text>
+            <ButtonText>Sign Up</ButtonText>
           </Button>
         </View>
       </View>
